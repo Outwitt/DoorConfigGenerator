@@ -17,6 +17,10 @@
         <input type="text" id="type" name="type">
         <br><br>
 
+        <input type="checkbox" id="batteringRamCompatible" name="batteringRamCompatible" value="batteringRamCompatible">
+        <label for="batteringRamCompatible"> batteringRamCompatible</label>
+        <br><br>
+
         <input type="checkbox" id="maintainState" name="maintainState" value="maintainState">
         <label for="maintainState"> MaintainState - Bypass Auto Close</label>
         <br><br>
@@ -53,6 +57,7 @@
     <script>
         const type = document.querySelector("#type");
         const maintainState = document.querySelector("#maintainState");
+        const batteringRamCompatible = document.querySelector("#batteringRamCompatible");
 
         const LockingEnabled = document.querySelector("#LockingEnabled");
         const DefaultLocked = document.querySelector("#DefaultLocked");
@@ -74,6 +79,7 @@
             var config = []
             config.push(`"${type.value}"`)
             config.push(String(maintainState.checked))
+            config.push(String(batteringRamCompatible.checked))
             config.push(LockingEnabled.checked == true ? `[${String(DefaultLocked.checked)},${String(AutoLockAfter.value).trim() == "" ? "null" : AutoLockAfter.value}, ${String(CloseDoorsOnAutoLock.checked)}]` : "null")
             config.push(KnockingEnabled.checked == true ? `[${String(CanKnockWhenUnlocked.checked)},${String(KnockCooldown.value).trim() == "" ? "null" : KnockCooldown.value}]` : "null")
             console.log(config)
